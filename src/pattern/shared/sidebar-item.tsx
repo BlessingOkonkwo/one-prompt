@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
 
-const SidebarItem = () => {
-  return (
-    <div>SidebarItem</div>
-  )
+interface IProps {
+  title: string;
 }
 
-export default SidebarItem
+const SidebarItem = ({ title }: IProps) => {
+  return (
+    <>
+      <p className="text-sidebarForeground text-bold">{title}</p>
+    </>
+  );
+};
+
+export default SidebarItem;
