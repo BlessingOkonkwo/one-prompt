@@ -6,8 +6,9 @@ import { User } from '@heroui/react';
 import React from 'react'
 
 function ChatBotHeader() {
-    const { states, activeStateId, addMessage, setActiveState, createNewState } = useStateContext();
-    const activeState = states.find((state) => state.id === activeStateId);
+    const { engines,activeEngineId, activeStateId, addMessage, setActiveState, createNewState } = useStateContext();
+    const activeEngine = engines.find((engine) => engine.engineId === activeEngineId);
+  
 
     return (
 
@@ -19,7 +20,7 @@ function ChatBotHeader() {
                     <p className=" font-medium text-subHeading text-[1.5rem]">One<span className="font-BalloBhaina text-primary_color font-normal">Prompt</span></p>
                 </div>
                 <div className='flex place-items-center ml-20 '>
-                    <EngineLogo />  <p className="text-sidebarSub ml-1 text-[1.1rem] font-inter">{activeState?.title}</p>
+                    <EngineLogo />  <p className="text-sidebarSub ml-1 text-[1.1rem] font-inter">{activeEngine?.engineName}</p>
                 </div>
                 <div className='flex-1' />
                 <User

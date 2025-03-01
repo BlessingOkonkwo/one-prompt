@@ -3,8 +3,9 @@ import { useStateContext } from '@/state/provider';
 import React from 'react';
 
 const MessageList = () => {
-  const { states, activeStateId } = useStateContext();
-  const activeState = states.find((state) => state.id === activeStateId);
+  const { engines, activeEngineId, activeStateId } = useStateContext();
+  const activeEngine = engines.find((engine) => engine.engineId === activeEngineId);
+  const activeState = activeEngine?.searchHistory.find((state) => state.id === activeStateId);
 
   if (!activeState) {
     return <div>Please select a chat session to view messages.</div>;

@@ -11,4 +11,9 @@ export interface Message {
     title: string;
     messages: Message[];
   }
-  
+
+export interface Engine {
+  engineId: number;
+  engineName: string;
+  searchHistory: State[]; // The chat sessions per engine
+}
