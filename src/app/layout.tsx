@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { albert_sans, inter, nunito_sans } from "./fonts";
+import { albert_sans, inter, nunito_sans, } from "./fonts";
 import "./globals.css";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +18,9 @@ export default function RootLayout({
       <body
         className={`${albert_sans.variable} ${nunito_sans.variable} ${inter.variable} antialiased`}
       >
+        <Providers>
         {children}
+        </Providers>
       </body>
     </html>
   );

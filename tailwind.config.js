@@ -1,3 +1,4 @@
+const { heroui } = require("@heroui/react");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -7,6 +8,7 @@ module.exports = {
 
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
     extend: {
@@ -14,6 +16,7 @@ module.exports = {
         nunito: "var(--font-nunito-sans)",
         albert: "var(--font-albert-sana)",
         inter: "var(--font-inter)",
+        BalloBhaina: ["Baloo Bhaina", "sans-serif"], // Define the custom font class
       },
       colors: {
         background: "var(--background)",
@@ -38,6 +41,7 @@ module.exports = {
         cardActive: "var(--card-active)",
         nav: "var(--nav)",
         navCategory: "var(--nav-category)",
+        logoTint: "var(--logo_tint)",
         profile: "var(--profile)",
         profileSub: "var(--profile-sub)",
         navBorder: "var(--nav-border)",
@@ -58,7 +62,7 @@ module.exports = {
         tableForeground: "var(--table-foreground)",
         tableHeader: "var(--table-header)",
         tableBorder: "var(--table-border)",
-        primary: "var(--primary)",
+        primary_color: "var(--primary)",
         primaryForeground: "var(--primary-foreground)",
         heading: "var(--heading)",
         subHeading: "var(--sub-heading)",
@@ -119,5 +123,53 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  darkMode: "media",
+  plugins: [heroui({
+    layout: {
+      borderWidth: {
+        small: "0.6px", // border-small
+        medium: "1px", // border-medium
+        large: "2px", // border-large
+      }
+    },
+    themes: {
+      light: {
+        colors: {
+          default: "#ffffff",
+          background: "#FFFFFF",
+          foreground: "#495057",
+          secondary: "#FDAF3B", // or 50 to 900 DEFAULT
+          primary: {
+            //... 50 to 900
+            foreground: "#CED4DA",
+            DEFAULT: "#DB353A",
+          },
+          divider: {
+            DEFAULT: "#1c1f3532",
+          },
+          focus: "#FDAF3B"
+          // ... rest of the colors
+        },
+      },
+      dark: {
+        colors: {
+          background: "#212529",
+          foreground: "#CED4DA",
+          secondary: "#444A64", // or 50 to 900 DEFAULT
+          primary: {
+            //... 50 to 900
+            foreground: "#CED4DA",
+            DEFAULT: "#DB353A",
+
+          },
+          divider: {
+            DEFAULT: "#FFFFFF",
+          },
+          focus: "#FDAF3B"
+        },
+        // ... rest of the colors
+      },
+    },
+  }
+  )]
 };
