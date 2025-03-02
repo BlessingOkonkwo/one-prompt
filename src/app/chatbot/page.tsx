@@ -1,8 +1,10 @@
 "use client";
 import MessageList from "@/components/chat/messagelist";
 import AddMessageField from "@/components/chat/textfield";
+import ChevronBackIcon from "@/pattern/shared/icons/chevron-back-icon";
 import Sidebar from "@/pattern/shared/sidebar";
 import { useStateContext } from "@/state/provider";
+import Link from "next/link";
 import React from "react";
 
 function Page() {
@@ -29,8 +31,14 @@ function Page() {
       </div> */}
 
       <Sidebar />
-      
-      <div className=" w-full px-4  flex flex-col">
+
+      <div className="w-ful px-4 flex flex-col gap-10 w-[740px]">
+        <Link
+          className="flex items-center gap-2 text-prompt mt-[22px] ml-[32px] hover:bg-iconHover w-fit p-1 rounded"
+          href={`/`}
+        >
+          <ChevronBackIcon /> Back
+        </Link>
         <MessageList />
         <AddMessageField />
       </div>

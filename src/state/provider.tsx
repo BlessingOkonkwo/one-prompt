@@ -1,6 +1,6 @@
 // context/StateContext.tsx
 import React, { createContext, useContext, useState, ReactNode } from "react";
-import { Engine, Chat, Message } from "./types";
+import { Engine, Chat, Message } from "../types";
 
 interface StateContextProps {
   engines: Engine[]; // Array of all engines

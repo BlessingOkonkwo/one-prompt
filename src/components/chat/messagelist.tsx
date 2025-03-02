@@ -1,6 +1,9 @@
 // components/MessageList.tsx
+// import ChevronBackIcon from "@/pattern/shared/icons/chevron-back-icon";
 import { useStateContext } from "@/state/provider";
+// import Link from "next/link";
 import React from "react";
+import MessageCard from "./message-card";
 
 const MessageList = () => {
   const { engines, activeEngineId, activeChatId } = useStateContext();
@@ -17,18 +20,21 @@ const MessageList = () => {
 
   return (
     <div className="flex flex-col grow flex-1">
-      <h3>Messages in &quot;{activeState.title}&quot;</h3>
-
-      <div>
+      {/* <Link
+        className="flex items-center gap-2 text-prompt mt-[22px] ml-[32px] hover:bg-iconHover w-fit p-1 rounded"
+        href={`/`}
+      >
+        <ChevronBackIcon /> Back
+      </Link> */}
+      <div className="h-full">
         {activeState.messages.length === 0 ? (
           <p>No messages yet!</p>
         ) : (
-          activeState.messages.map((msg) => (
-            <div key={msg.id} style={{ marginBottom: "10px" }}>
-              <p>{msg.message}</p>
-              <small>{msg.date}</small>
-            </div>
-          ))
+          <div className="h-full flex flex-col gap-5 justify-end">
+            {activeState.messages.map((msg) => (
+              <MessageCard key={msg.id} isAi={msg.isAi} text={msg.message} />
+            ))}
+          </div>
         )}
       </div>
     </div>
