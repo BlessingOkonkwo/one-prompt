@@ -16,8 +16,9 @@ const MessageList = () => {
   }
 
   return (
-    <div className=" flex flex-col grow flex-1">
+    <div className="flex flex-col grow flex-1">
       <h3>Messages in &quot;{activeState.title}&quot;</h3>
+
       <div>
         {activeState.messages.length === 0 ? (
           <p>No messages yet!</p>
