@@ -4,7 +4,7 @@ import { Button, Input } from '@heroui/react';
 import React, { useState } from 'react';
 
 const AddMessageField = () => {
-  const { activeStateId, addMessage } = useStateContext();
+  const { activeChatId, addMessage } = useStateContext();
   const [newMessage, setNewMessage] = useState<string>('');
 
   const handleAddMessage = () => {
@@ -20,7 +20,7 @@ const AddMessageField = () => {
     }
   };
 
-  if (!activeStateId) {
+  if (!activeChatId) {
     return <div>Please select a chat session to add messages.</div>;
   }
 

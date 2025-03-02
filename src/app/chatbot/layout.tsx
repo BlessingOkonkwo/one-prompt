@@ -13,7 +13,7 @@ export default function RootLayout({
 }>) {
     return (
         <main
-            className="flex flex-col min-h-screen"
+            className="font-inter flex flex-col min-h-screen text-sm"
         >
             <ChatBotHeader />
 
