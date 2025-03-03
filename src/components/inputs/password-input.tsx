@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { FC, useState } from "react";
 import InputErrorMessage from "./input-error-message";
 import { FieldSet } from "./fieldset";

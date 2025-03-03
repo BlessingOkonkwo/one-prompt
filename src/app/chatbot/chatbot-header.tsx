@@ -1,10 +1,13 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import EngineLogo from "@/pattern/shared/icons/engine";
+import OnePromptLogo from "@/pattern/shared/icons/one-prompt-logo";
 import SterlingLogoOnly from "@/pattern/shared/icons/sterling-logo2";
 import { useStateContext } from "@/state/provider";
 import { User } from "@heroui/react";
 import React from "react";
+import "../../../public/profile-pic.svg";
+import TopbarDropdown from "@/pattern/topbar/topbar-dropdown";
 
 function ChatBotHeader() {
   const {
@@ -21,41 +24,35 @@ function ChatBotHeader() {
   );
 
   return (
-    <div className=" py-5 bg-white border-b-1 border-navBorder">
+    <div className=" py-5 bg-nav border-b-1 border-navBorder">
       <div className=" flex flex-row mx-auto container  place-items-center">
-        <div className="flex w-fit">
-          <SterlingLogoOnly />
-          <p className=" font-medium text-subHeading text-[1.5rem]">
-            One
-            <span className="font-BalloBhaina text-primary_color font-normal">
-              Prompt
-            </span>
-          </p>
-        </div>
+        <OnePromptLogo />
         <div className="flex place-items-center ml-20 ">
           <EngineLogo />{" "}
-          <p className="text-sidebarSub ml-1 text-[1.1rem] font-inter">
+          <p className="text-navCategory ml-1 text-base font-medium font-inter">
             {activeEngine?.engineName}
           </p>
         </div>
         <div className="flex-1" />
-        <User
-          classNames={{
-            description: [
-              "font-inter",
-              "text-[1rem] font-normal text-sidebarSub",
-            ],
-            name: [
-              "font-inter",
-              "text-[1rem] font-bold text-sidebarHeading  leading-none ",
-            ],
-          }}
-          avatarProps={{
-            src: "https://i.pravatar.cc/150?u=a04258114e29026702d",
-          }}
-          description="Product Designer"
-          name="Jane Doe"
-        />
+
+        <div className="flex items-center gap-2">
+          <Avatar>
+            <AvatarImage
+              src="https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-1.2.1&w=128&h=128&dpr=2&q=80"
+              alt="@shadcn"
+            />
+            <AvatarFallback>CA</AvatarFallback>
+          </Avatar>
+
+          <div className="flex flex-col ">
+            <p className="text-profile font-bold text-sm">Ciroma Adekunle</p>
+            <p className="text-profileSub font-normal text-sm">
+              Customer Experience
+            </p>
+          </div>
+
+          <TopbarDropdown />
+        </div>
       </div>
     </div>
   );

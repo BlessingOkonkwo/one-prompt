@@ -1,6 +1,7 @@
 "use client";
 import MessageList from "@/components/chat/messagelist";
 import AddMessageField from "@/components/chat/textfield";
+import Suggestions from "@/pattern/dashboard/suggestions";
 import ChevronBackIcon from "@/pattern/shared/icons/chevron-back-icon";
 import Sidebar from "@/pattern/shared/sidebar";
 import { useStateContext } from "@/state/provider";
@@ -22,7 +23,7 @@ function Page() {
     return <div>Please select a chat session to view messages.</div>;
   }
   return (
-    <div className="flex grow w-screen bg-">
+    <div className="flex grow w-screen bg- min-h-screen">
       {/* <div className="flex flex-col bg-white w-[20vw] place-items-center">
         <p>Your recent searches</p>
         {activeEngine?.searchHistory.map((re, i) => (
@@ -39,8 +40,15 @@ function Page() {
         >
           <ChevronBackIcon /> Back
         </Link>
-        <MessageList />
-        <AddMessageField />
+
+        <div className="h-full justify-end">
+          <MessageList />
+
+          <div className="flex flex-col gap-[10px]">
+            <Suggestions />
+            <AddMessageField />
+          </div>
+        </div>
       </div>
     </div>
   );

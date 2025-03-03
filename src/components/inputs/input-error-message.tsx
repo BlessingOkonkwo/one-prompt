@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { ErrorMessage } from "@hookform/error-message";
 import InputErrorIcon from "@/pattern/shared/icons/input-error-icon";

@@ -19,24 +19,16 @@ const MessageList = () => {
   }
 
   return (
-    <div className="flex flex-col grow flex-1">
-      {/* <Link
-        className="flex items-center gap-2 text-prompt mt-[22px] ml-[32px] hover:bg-iconHover w-fit p-1 rounded"
-        href={`/`}
-      >
-        <ChevronBackIcon /> Back
-      </Link> */}
-      <div className="h-full">
-        {activeState.messages.length === 0 ? (
-          <p>No messages yet!</p>
-        ) : (
-          <div className="h-full flex flex-col gap-5 justify-end">
-            {activeState.messages.map((msg) => (
-              <MessageCard key={msg.id} isAi={msg.isAi} text={msg.message} />
-            ))}
-          </div>
-        )}
-      </div>
+    <div className="h-full">
+      {activeState.messages.length === 0 ? (
+        <p>No messages yet!</p>
+      ) : (
+        <div className="h-full flex flex-col gap-5 justify-end">
+          {activeState.messages.map((msg) => (
+            <MessageCard key={msg.id} isAi={msg.isAi} text={msg.message} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

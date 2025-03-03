@@ -1,6 +1,6 @@
 import React from "react";
 
-interface CustomSVGProps extends React.SVGProps<SVGSVGElement> { }
+type CustomSVGProps = React.SVGProps<SVGSVGElement>
 
 const LeftUpwardsArrow: React.FC<CustomSVGProps> = (props) => {
   return (

@@ -26,6 +26,8 @@ body {
 
 html {
   scroll-behavior: smooth;
+  /* min-height: 100vh;
+  overflow: auto; */
 }
 
 @layer base {
@@ -95,6 +97,9 @@ html {
   --primary: #db353a;
   --primary-foreground: #ffffff;
 
+  --dropdown: #ffffff;
+  --dropdown-border: #e9ecef;
+
   --heading: #1a1a1a;
   --sub-heading: #495057;
   --input: #ffffff;
@@ -112,6 +117,12 @@ html {
   --icon-hover: rgba(0, 0, 0, 0.07);
   --input-border: #c4c4c4;
   --input-foreground: #212529;
+  --back-icon: #495057;
+  --mode: #000000;
+  --sub-category: #ffffff;
+  --sub-category-border: #ced4da;
+  --category-card-icon: #ced4da;
+  --category-card-icon-active: #ced4da;
 
   --action: #495057;
   --border: #99a3ad;
@@ -189,6 +200,10 @@ html {
   --sidebar-active: #495057;
   --sidebar-active-foreground: #ffffff;
 
+  --textarea: #343a40;
+  --textarea-foreground: #ffffff;
+  --textarea-placeholder: #adb5bd;
+
   --prompt-btn: #343a40;
   --prompt-btn-foreground: #9aa1a8;
   --prompt-btn-border: #6c757d;
@@ -231,6 +246,9 @@ html {
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 40% 98%;
 
+  --dropdown: #212529;
+  --dropdown-border: #343a40;
+
   --heading: #ced4da;
   --sub-heading: #ced4da;
   --auth-heading: #ced4da;
@@ -246,6 +264,12 @@ html {
   --input-border: hsla(0, 0%, 100%, 0.3);
   --input: hsla(0, 0%, 100%, 0.11);
   --input-foreground: hsla(210, 14%, 83%, 1);
+  --back-icon: #adb5bd;
+  --mode: #ced4da;
+  --sub-category: #343a40;
+  --sub-category-border: #6c757d;
+  --category-card-icon: #495057;
+  --category-card-icon-active: #ced4da;
 
   --action: #9aa1a8;
   --main: #ced4da;
@@ -276,4 +300,21 @@ html {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.rotate-y-1 {
+  transform: scaleX(-1) rotate(2deg);
+  /* transform: rotate(5deg); */
+}
+.rotate-y-2 {
+  transform: scaleX(-1) rotate(65deg);
+}
+.rotate-y-3 {
+  transform: scaleX(-1) rotate(-100deg);
+  left: 50%;
+  top: 77%;
+}
+.rotate-y-4 {
+  transform: scaleX(-1) rotate(35deg);
+  /* transform: rotate(5deg); */
 }

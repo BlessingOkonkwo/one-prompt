@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useStateContext } from "@/state/provider";
 import React, { useState } from "react";
 import SidebarItem from "./sidebar-item";

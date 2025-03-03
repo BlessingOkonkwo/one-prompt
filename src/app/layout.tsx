@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${albert_sans.variable} ${nunito_sans.variable} ${inter.variable} antialiased`}
+        className={`${albert_sans.variable} ${nunito_sans.variable} ${inter.variable} antialiased min-h-screen h-fi`}
       >
         <Providers>{children}</Providers>
       </body>

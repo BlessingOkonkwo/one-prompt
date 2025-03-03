@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 // types.ts
 import { FieldError } from "react-hook-form";
 import { Dispatch, ReactElement, ReactNode, SetStateAction } from "react";
