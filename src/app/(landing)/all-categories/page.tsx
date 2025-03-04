@@ -5,20 +5,25 @@ import { useStateContext } from "@/state/provider";
 import { useRouter } from "next/navigation";
 import SubCategoryCard from "@/pattern/landing/sub-category-card";
 
+interface ExpandedItem{
+  index:number,
+  engineId:number
+}
 const Page = () => {
   const router = useRouter();
 
   const { engines, activeEngineId, activeChatId, setActiveEngine } =
     useStateContext();
 
-  const [expandedCategory, setExpandedCategory] = useState<number | null>(null);
+  const [expandedCategory, setExpandedCategory] = useState<ExpandedItem | null>(null);
 
   const handleCategoryClick = (
     engineId: number,
-    hasSubcategories: number | undefined
+    hasSubcategories: number | undefined,
+    index:number
   ) => {
     if (hasSubcategories) {
-      setExpandedCategory(expandedCategory === engineId ? null : engineId);
+      setExpandedCategory((re)=> re?.engineId==engineId?null:{index:index,engineId:engineId});
     } else {
       setExpandedCategory(null);
     }
@@ -76,7 +81,7 @@ const Page = () => {
 
       <div className="grid grid-cols-2 gap-4">
         {engines.map((item, i) => {
-          const isExpanded = expandedCategory === item.engineId;
+          const isExpanded = expandedCategory?.index == i;
 
           return (
             <React.Fragment key={item.engineId}>
@@ -89,7 +94,8 @@ const Page = () => {
                   if (item.subCategories?.length) {
                     handleCategoryClick(
                       item.engineId,
-                      item.subCategories.length
+                      item.subCategories.length,
+                      i%2!=0?i:i+1
                     );
                   } else {
                     setActiveEngine(item.engineId);
@@ -100,13 +106,13 @@ const Page = () => {
                 }}
               />
 
-              {isExpanded && item?.subCategories?.length && (
+              {isExpanded && engines.find((re)=> re.engineId==expandedCategory.engineId)?.subCategories?.length && i%2!=0 && (
                 <div
                   key={`drop-${item.engineId}`}
-                  className="col-span-2 flex flex-wrap gap-7 bg-cardDropdown p-6"
+                  className="col-span-2 flex flex-wrap gap-7 bg-cardDropdown p-6 transition-all ease-in-out duration-400"
                 >
-                  {item?.subCategories?.map((sub, i) => (
-                    <SubCategoryCard key={`sub-${sub.id}`} engineId={sub.id}>
+                  {engines.find((re)=> re.engineId==expandedCategory.engineId)?.subCategories?.map((sub, i) => (
+                    <SubCategoryCard categoryId={item.engineId} key={`sub-${sub.id}`} engineId={sub.id}>
                       {sub.sub}
                     </SubCategoryCard>
                   ))}
