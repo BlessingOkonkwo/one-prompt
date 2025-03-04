@@ -1,3 +1,4 @@
+'use client'
 // components/AddMessageField.tsx
 import { useStateContext } from "@/state/provider";
 import React, { useState } from "react";
@@ -8,7 +9,10 @@ import SuggestionIcon from "@/pattern/shared/icons/suggestion-icon";
 import VoiceNoteIcon from "@/pattern/shared/icons/voice-note-icon";
 import AttachmentIcon from "@/pattern/shared/icons/attachment-icon";
 
-const AddMessageField = () => {
+interface AddMessageFieldProps {
+  isTyping: boolean;
+}
+const AddMessageField: React.FC<AddMessageFieldProps> = ({ isTyping }) => {
   const { activeChatId, addMessage } = useStateContext();
   const [newMessage, setNewMessage] = useState<string>("");
 
@@ -43,7 +47,7 @@ const AddMessageField = () => {
           <IconButton prefixIcon={<VoiceNoteIcon />}>Voice</IconButton>
           <IconButton prefixIcon={<AttachmentIcon />}>Attach</IconButton>
         </div>
-        <button onClick={handleAddMessage}>
+        <button disabled={isTyping} className={`${isTyping && "opacity-30 cursor-wait"}`} onClick={handleAddMessage}>
           <UploadIcon />
         </button>
       </div>

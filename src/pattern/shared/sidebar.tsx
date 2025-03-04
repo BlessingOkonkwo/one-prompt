@@ -11,16 +11,14 @@ const Sidebar = () => {
   const activeEngine = engines.find(
     (engine) => engine.engineId === activeEngineId
   );
-
+  
+ 
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
     <div
-      // className={`min-h-screen fixe left- text-sm transition-all duration-300 flex flex-col px-5 py-[22px] pt-[102px] space-y-4 ${
-      //   isCollapsed ? "w-fit bg-background" : "w-[260px] bg-sidebar"
-      // }`}
-      className={`min-h-screen text-sm transition-[max-width] duration-500 ease-in-out flex flex-col px-5 py-[22px] pt-[102px] space-y-4 overflow-hidden ${
-        isCollapsed ? "max-w-[60px] bg-background" : "max-w-[260px] bg-sidebar"
+      className={`grow overflow-y-auto  text-sm transition-all duration-300 ease-in-out flex flex-col px-5 py-[22px] pt-[102px] space-y-4 ${
+        isCollapsed ? "max-w-[7vw] bg-background" : "max-w-[16vw] bg-sidebar"
       }`}
     >
       <div className="flex items-center justify-end">
@@ -78,6 +76,7 @@ const Sidebar = () => {
                     href={`/chatbot?engineId=${activeEngineId}&chatId=${history.id}`}
                   />
                 ))}
+               
               </div>
             </div>
           </div>

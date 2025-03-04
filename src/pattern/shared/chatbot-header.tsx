@@ -25,6 +25,7 @@ function ChatBotHeader() {
   const activeEngine = engines.find(
     (engine) => engine.engineId === activeEngineId
   );
+  const activeSubCategory = activeEngine?.subCategories?.find((categories)=> categories.id==activeSubCategoryId)
 
   const pathname = usePathname();
 

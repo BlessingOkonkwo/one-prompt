@@ -24,9 +24,11 @@ interface StateContextProps {
   engines: Engine[]; // Array of all engines
   activeEngineId: number; // ID of the active engine
   activeChatId: string; // ID of the active state within the selected engine
+  activeSubCategoryId: number | undefined,
   isLoggedIn: boolean;
   addMessage: (message: Message) => void;
-  setActiveEngine: (engineId: number) => void; // Set the active engine
+  addAiMessage: () => void;
+  setActiveEngine: (engineId: number, subcategory?: number) => void; // Set the active engine
   setActiveChat: (chatId: string) => void; // Set the active state within the selected engine
   createNewChat: (title: string) => void; // Create a new chat session for the active engine
   setIsLoggedIn: (status: boolean) => void;
@@ -195,7 +197,8 @@ export const StateProvider = ({ children }: StateProviderProps) => {
   ];
 
   const [engines, setEngines] = useState<Engine[]>(initialEngines);
-  const [activeEngineId, setActiveEngineId] = useState<number>(2); // Default engine is "NIP Query Engine"
+  const [activeEngineId, setActiveEngineId] = useState<number>(-1); // Default engine is "NIP Query Engine"
+  const [activeSubCategoryId, setSubCategoryId] = useState<number | undefined>();
   const [activeChatId, setActiveChatId] = useState<string>("chat-2"); // Default active state
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
@@ -205,21 +208,55 @@ export const StateProvider = ({ children }: StateProviderProps) => {
       prevEngines.map((engine) =>
         engine.engineId === activeEngineId
           ? {
-              ...engine,
-              searchHistory: engine.searchHistory.map((state) =>
-                state.id === activeChatId
-                  ? { ...state, messages: [...state.messages, message] }
-                  : state
-              ),
-            }
+            ...engine,
+            searchHistory: engine.searchHistory.map((state) =>
+              state.id === activeChatId
+                ? { ...state, messages: [...state.messages, message] }
+                : state
+            ),
+          }
+          : engine
+      )
+    );
+  };
+
+  const addAiMessage = () => {
+    const newMessageObj = {
+      message: `<div>
+  <h2>AI Response</h2>
+  <p>This is a sample AI-generated response. It contains:</p>
+  <ul>
+    <li><strong>Bold Text</strong></li>
+    <li><em>Italicized Text</em></li>
+    <li><a href="https://www.example.com" target="_blank" rel="noopener noreferrer">A clickable link</a></li>
+  </ul>
+  <p>End of response.</p>
+</div>
+`,
+      date: new Date().toISOString(),
+      isAi: true,
+      id: Date.now().toString(),
+    };
+    setEngines((prevEngines) =>
+      prevEngines.map((engine) =>
+        engine.engineId === activeEngineId
+          ? {
+            ...engine,
+            searchHistory: engine.searchHistory.map((state) =>
+              state.id === activeChatId
+                ? { ...state, messages: [...state.messages, newMessageObj] }
+                : state
+            ),
+          }
           : engine
       )
     );
   };
 
   // Set the active engine (switch between engines)
-  const setActiveEngine = (engineId: number) => {
+  const setActiveEngine = (engineId: number, categoryId?: number) => {
     setActiveEngineId(engineId);
+    setSubCategoryId(categoryId);
     // Automatically set the first state of the new engine as active
     const engine = engines.find((engine) => engine.engineId === engineId);
     if (engine) {
@@ -243,9 +280,9 @@ export const StateProvider = ({ children }: StateProviderProps) => {
       prevEngines.map((engine) =>
         engine.engineId === activeEngineId
           ? {
-              ...engine,
-              searchHistory: [...engine.searchHistory, newChat],
-            }
+            ...engine,
+            searchHistory: [...engine.searchHistory, newChat],
+          }
           : engine
       )
     );
@@ -258,8 +295,10 @@ export const StateProvider = ({ children }: StateProviderProps) => {
         engines,
         activeEngineId,
         activeChatId,
+        activeSubCategoryId,
         isLoggedIn,
         addMessage,
+        addAiMessage,
         setActiveEngine,
         setActiveChat,
         createNewChat,
