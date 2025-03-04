@@ -1,9 +1,9 @@
 // components/AddMessageField.tsx
 import { useStateContext } from "@/state/provider";
 import React, { useState } from "react";
-import { Textarea } from "../ui/textarea";
+import { Textarea } from "../../components/ui/textarea";
 import UploadIcon from "@/pattern/shared/icons/upload-icon";
-import IconButton from "../controls/icon-button";
+import IconButton from "../../components/controls/icon-button";
 import SuggestionIcon from "@/pattern/shared/icons/suggestion-icon";
 import VoiceNoteIcon from "@/pattern/shared/icons/voice-note-icon";
 import AttachmentIcon from "@/pattern/shared/icons/attachment-icon";
@@ -18,10 +18,10 @@ const AddMessageField = () => {
         message: newMessage,
         date: new Date().toISOString(),
         isAi: false,
-        id: Date.now().toString(), // Generate a unique ID for the message
+        id: Date.now().toString(),
       };
       addMessage(newMessageObj);
-      setNewMessage(""); // Clear input after adding the message
+      setNewMessage("");
     }
   };
 
@@ -31,14 +31,6 @@ const AddMessageField = () => {
 
   return (
     <div className="flex flex-col p-5 rounded-[20px] bg-textarea mb-4">
-      {/* <Input
-        type="text"
-        color='primary'
-        value={newMessage}
-        onValueChange={(e) => setNewMessage(e)}
-        placeholder="Type a new message"
-      /> */}
-
       <Textarea
         placeholder="Ask anything..."
         value={newMessage}

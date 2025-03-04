@@ -19,6 +19,15 @@ export interface Engine {
   engineId: number;
   engineName: string;
   searchHistory: Chat[]; // The chat sessions per engine
+  icon: ReactNode;
+  cardIcon: ReactNode;
+  description: string;
+  position: string;
+  subCategories?: {
+    id: number;
+    name: string;
+    sub: ReactNode;
+  }[];
 }
 
 export interface ICustomInputProps
@@ -45,4 +54,9 @@ export interface ITypographyProps {
 export interface IInputIconProps extends IIconProps {
   focused?: boolean; // input focus state
   togglePasswordInput?: boolean; // password input visible state
+}
+
+export interface ILoginPayload {
+  email: string;
+  password: string;
 }

@@ -16,7 +16,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`text-sm transition-all duration-300 flex flex-col px-5 py-[22px] space-y-4 ${
+      className={`min-h-screen fixe left- text-sm transition-all duration-300 flex flex-col px-5 py-[22px] pt-[102px] space-y-4 ${
         isCollapsed ? "w-fit bg-background" : "w-[260px] bg-sidebar"
       }`}
     >
@@ -56,7 +56,7 @@ const Sidebar = () => {
                     key={i}
                     title={history.title}
                     chatId={history.id}
-                    href={`/chatbot?engine=${activeEngineId}&chatId=${history.id}`}
+                    href={`/chatbot?engineId=${activeEngineId}&chatId=${history.id}`}
                   />
                 ))}
               </div>
@@ -72,7 +72,7 @@ const Sidebar = () => {
                     key={i}
                     title={history.title}
                     chatId={history.id}
-                    href={`/chatbot?engine=${activeEngineId}&chatId=${history.id}`}
+                    href={`/chatbot?engineId=${activeEngineId}&chatId=${history.id}`}
                   />
                 ))}
               </div>

@@ -1,15 +1,35 @@
 // context/StateContext.tsx
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import { Engine, Chat, Message } from "../types";
+import NipCategoryIcon from "@/pattern/shared/icons/nip-category-icon";
+import NipCardIcon from "@/pattern/shared/icons/nip-card-icon";
+import FinancialCategoryIcon from "@/pattern/shared/icons/financial-category-icon";
+import FinancialCardIcon from "@/pattern/shared/icons/financial-card-icon";
+import ProductsCategoryIcon from "@/pattern/shared/icons/products-category-icon";
+import ProductsCardIcon from "@/pattern/shared/icons/products-card-icon";
+import OnebankLogo from "@/pattern/shared/icons/onebank-logo";
+import SpectaLogo from "@/pattern/shared/icons/specta-logo";
+import BancaLogo from "@/pattern/shared/icons/banca-logo";
+import SwitchLogo from "@/pattern/shared/icons/switch-logo";
+import GeneralHealthCategoryIcon from "@/pattern/shared/icons/general-health-category-icon";
+import GeneralHealthCardIcon from "@/pattern/shared/icons/general-health-card-icon";
+import HumanCapitalCategoryIcon from "@/pattern/shared/icons/human-capital-category-icon";
+import HumanCapitalCardIcon from "@/pattern/shared/icons/human-capital-card-icon";
+import HamzaLogo from "@/pattern/shared/icons/hamza-logo";
+import OnboardingLogo from "@/pattern/shared/icons/onboarding-logo";
+import QueryCategoryIcon from "@/pattern/shared/icons/query-category-icon";
+import QueryBotCardIcon from "@/pattern/shared/icons/query-bot-card-icon";
 
 interface StateContextProps {
   engines: Engine[]; // Array of all engines
   activeEngineId: number; // ID of the active engine
   activeChatId: string; // ID of the active state within the selected engine
+  isLoggedIn: boolean;
   addMessage: (message: Message) => void;
   setActiveEngine: (engineId: number) => void; // Set the active engine
   setActiveChat: (chatId: string) => void; // Set the active state within the selected engine
   createNewChat: (title: string) => void; // Create a new chat session for the active engine
+  setIsLoggedIn: (status: boolean) => void;
 }
 
 const StateContext = createContext<StateContextProps | undefined>(undefined);
@@ -25,6 +45,11 @@ export const StateProvider = ({ children }: StateProviderProps) => {
       engineId: 1,
       engineName: "NIP Query Engine",
       searchHistory: [{ id: "1", title: "What are Nip", messages: [] }],
+      icon: <NipCategoryIcon />,
+      cardIcon: <NipCardIcon />,
+      description:
+        "This engine provides you with all details about NIP queries and financial transactions.",
+      position: "middle-left",
     },
     {
       engineId: 2,
@@ -98,13 +123,33 @@ export const StateProvider = ({ children }: StateProviderProps) => {
         },
         { id: "chat-3", title: "Best investments to make", messages: [] },
         { id: "chat-4", title: "Passive income advice", messages: [] },
-        { id: "chat-5", title: "Should I invest in cryptocurrency", messages: [] },
+        {
+          id: "chat-5",
+          title: "Should I invest in cryptocurrency",
+          messages: [],
+        },
       ],
+      icon: <FinancialCategoryIcon />,
+      cardIcon: <FinancialCardIcon />,
+      description:
+        "This engine provides you with all details about Financial Advisory and financial portfolios.",
+      position: "top-left",
     },
     {
       engineId: 3,
       engineName: "Products",
       searchHistory: [{ id: "1", title: "What are products", messages: [] }],
+      icon: <ProductsCategoryIcon />,
+      cardIcon: <ProductsCardIcon />,
+      description:
+        "This engine provides you with all details about the different products and offerings.",
+      position: "top-right",
+      subCategories: [
+        { id: 31, sub: <OnebankLogo />, name: "OneBank Query Bot" },
+        { id: 32, sub: <SpectaLogo />, name: "Specta Query Bot" },
+        { id: 33, sub: <BancaLogo />, name: "Banca Query Bot" },
+        { id: 34, sub: <SwitchLogo />, name: "Switch Query Bot" },
+      ],
     },
     {
       engineId: 4,
@@ -112,12 +157,47 @@ export const StateProvider = ({ children }: StateProviderProps) => {
       searchHistory: [
         { id: "1", title: "What is general health", messages: [] },
       ],
+      icon: <GeneralHealthCategoryIcon />,
+      cardIcon: <GeneralHealthCardIcon />,
+      description:
+        "This engine provides you with all details about General Health queries.",
+      position: "bottom-right",
+      subCategories: [
+        { id: 41, sub: <HamzaLogo />, name: "Hamza Query Bot" },
+        { id: 42, sub: <OnboardingLogo />, name: "Onboarding Query Bot" },
+      ],
+    },
+    {
+      engineId: 5,
+      engineName: "Human Capital",
+      searchHistory: [
+        { id: "1", title: "What is human capital", messages: [] },
+      ],
+      icon: <HumanCapitalCategoryIcon />,
+      cardIcon: <HumanCapitalCardIcon />,
+      description:
+        "This engine provides you with all details about Human Capital queries.",
+      position: "middle-right",
+      subCategories: [
+        { id: 51, sub: <HamzaLogo />, name: "Hamza Query Engine" },
+        { id: 52, sub: <OnboardingLogo />, name: "Onboarding Query Engine" },
+      ],
+    },
+    {
+      engineId: 6,
+      engineName: "Query Bot",
+      searchHistory: [{ id: "1", title: "Why shoukd I save", messages: [] }],
+      icon: <QueryCategoryIcon />,
+      cardIcon: <QueryBotCardIcon />,
+      description: "This engine provides you with all details about Query Bot",
+      position: "bottom-left",
     },
   ];
 
   const [engines, setEngines] = useState<Engine[]>(initialEngines);
   const [activeEngineId, setActiveEngineId] = useState<number>(2); // Default engine is "NIP Query Engine"
   const [activeChatId, setActiveChatId] = useState<string>("chat-2"); // Default active state
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   // Add a new message to the active chat of the active engine
   const addMessage = (message: Message) => {
@@ -178,10 +258,12 @@ export const StateProvider = ({ children }: StateProviderProps) => {
         engines,
         activeEngineId,
         activeChatId,
+        isLoggedIn,
         addMessage,
         setActiveEngine,
         setActiveChat,
         createNewChat,
+        setIsLoggedIn,
       }}
     >
       {children}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ChatBotHeader from "./chatbot-header";
+import ChatBotHeader from "../../pattern/shared/chatbot-header";
 
 export const metadata: Metadata = {
     title: "ChatBotPage",

@@ -1,5 +1,5 @@
 "use client";
-import LoginTopSection from "@/components/login/login-top-section";
+import LoginTopSection from "@/pattern/login/login-top-section";
 import GlobeVisualization from "@/pattern/landing/landing-animation";
 import MoreCategoriesIcon from "@/pattern/shared/icons/more-categories-icon";
 import Link from "next/link";

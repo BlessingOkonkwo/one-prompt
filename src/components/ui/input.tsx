@@ -8,7 +8,7 @@ export const inputVariants = cva(
     variants: {
       variant: {
         default:
-          "border-inputBorder focus:ring-[3px] focus:ring-[var(--ring-primary)] ",
+          "border-inputBorder focus:ring-[3px] focus:ring-[var(--ring-primar)] ",
         error:
           "border border-error disabled:border-border focus:ring-[3px] focus:ring-[hsla(0,86%,61%,0.05)]",
       },

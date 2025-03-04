@@ -17,6 +17,9 @@ function ChatBotHeader() {
     addMessage,
     setActiveChat,
     createNewChat,
+    isLoggedIn,
+    setIsLoggedIn,
+    setActiveEngine,
   } = useStateContext();
 
   const activeEngine = engines.find(
@@ -24,15 +27,16 @@ function ChatBotHeader() {
   );
 
   return (
-    <div className=" py-5 bg-nav border-b-1 border-navBorder">
+    <div className="fixed top-0 z-50 w-full py-5 bg-nav border-b-1 border-navBorder">
       <div className=" flex flex-row mx-auto container  place-items-center">
         <OnePromptLogo />
-        <div className="flex place-items-center ml-20 ">
+        <div className="flex place-items-center gap-1 ml-20 ">
           <EngineLogo />{" "}
           <p className="text-navCategory ml-1 text-base font-medium font-inter">
             {activeEngine?.engineName}
           </p>
         </div>
+
         <div className="flex-1" />
 
         <div className="flex items-center gap-2">

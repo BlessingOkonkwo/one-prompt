@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import globe from "../../../public/world.png";
@@ -6,8 +7,13 @@ import CategoryIcon1 from "../shared/icons/category-icon1";
 import CategoryIcon2 from "../shared/icons/category-icon2";
 import CategoryIcon3 from "../shared/icons/category-icon3";
 import CategoryIcon4 from "../shared/icons/category-icon4";
+import { useStateContext } from "@/state/provider";
+import { useRouter } from "next/navigation";
 
 const GlobeVisualization = () => {
+  const { engines, activeChatId, setActiveEngine } = useStateContext();
+  const router = useRouter();
+
   return (
     <div className="relative flex items-center justify-center h-[400px] w-[400px] mx-auto">
       {/* Animated Outer Orbit */}
@@ -46,6 +52,25 @@ const GlobeVisualization = () => {
       <CategoryIcon2 className="absolute z-50 top-[27%] left-[72%]" />
       <CategoryIcon3 className="absolute z-50 top-[77%] left-[56%]" />
       <CategoryIcon4 className="absolute z-50 top-[69%] left-[23%]" />
+
+      {engines.map((item, index) => (
+        <div
+          key={index}
+          onClick={() => {
+            setActiveEngine(item.engineId);
+            router.push(
+              `chatbot?engineId=${item.engineId}&chatId=${activeChatId}`
+            );
+          }}
+          className={`absolute flex items-center gap-2 ${item.position} cursor-pointer borde rounded-md px-2 transition-transform duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1`}
+        >
+          {item.position.includes("right") && item.icon}
+          <p className={`text-sm font-semibold mt-2 text-mainCategories`}>
+            {item.engineName}
+          </p>
+          {item.position.includes("left") && item.icon}
+        </div>
+      ))}
 
       {/* Globe Image */}
       <Image

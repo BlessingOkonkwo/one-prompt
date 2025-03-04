@@ -23,7 +23,7 @@ const MessageList = () => {
       {activeState.messages.length === 0 ? (
         <p>No messages yet!</p>
       ) : (
-        <div className="h-full flex flex-col gap-5 justify-end">
+        <div className="h-full flex flex-col gap-5 justify-en">
           {activeState.messages.map((msg) => (
             <MessageCard key={msg.id} isAi={msg.isAi} text={msg.message} />
           ))}

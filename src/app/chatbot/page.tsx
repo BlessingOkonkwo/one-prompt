@@ -1,6 +1,6 @@
 "use client";
-import MessageList from "@/components/chat/messagelist";
-import AddMessageField from "@/components/chat/textfield";
+import MessageList from "@/pattern/chat/messagelist";
+import AddMessageField from "@/pattern/chat/textfield";
 import Suggestions from "@/pattern/dashboard/suggestions";
 import ChevronBackIcon from "@/pattern/shared/icons/chevron-back-icon";
 import Sidebar from "@/pattern/shared/sidebar";
@@ -33,7 +33,7 @@ function Page() {
 
       <Sidebar />
 
-      <div className="w-ful px-4 flex flex-col gap-10 w-[740px]">
+      <div className="w-ful px-4 pt-[102px] flex flex-col gap-10 w-[740px w-full">
         <Link
           className="flex items-center gap-2 text-prompt mt-[22px] ml-[32px] hover:bg-iconHover w-fit p-1 rounded"
           href={`/`}
@@ -41,14 +41,17 @@ function Page() {
           <ChevronBackIcon /> Back
         </Link>
 
-        <div className="h-full justify-end">
+        <div className="h-full justify-end min-w-[740px] self-center mx-auto">
           <MessageList />
+
+          {/* <p>paragraph</p> */}
 
           <div className="flex flex-col gap-[10px]">
             <Suggestions />
             <AddMessageField />
           </div>
         </div>
+        {/* <p>paragraph2</p> */}
       </div>
     </div>
   );

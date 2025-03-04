@@ -8,7 +8,7 @@ interface IFieldSetProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const FieldSet = ({ children, className, ...props }: IFieldSetProps) => (
   <div
-    className={cn(className, "w-full flex flex-col items-start space-y-[10px]")}
+    className={cn(className, "w-full flex flex-col items-start space-y-[4px]")}
     {...props}
   >
     {children}

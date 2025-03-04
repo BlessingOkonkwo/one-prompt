@@ -1,19 +1,27 @@
-'use client'
+"use client";
+import { Toaster } from "@/components/ui/sonner";
 import { StateProvider } from "@/state/provider";
+import NiceModal from "@ebay/nice-modal-react";
 // app/providers.tsx
 
 import { HeroUIProvider } from "@heroui/react";
-import {ThemeProvider as NextThemesProvider} from "next-themes";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
 
-export function Providers({children}: { children: React.ReactNode }) {
+export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <StateProvider>
-    <HeroUIProvider>
-           <NextThemesProvider attribute="class" enableSystem={false} defaultTheme='light'>
-        {children}
-      </NextThemesProvider>
-     
-    </HeroUIProvider>
+      <Toaster position="top-center" richColors />
+      <NiceModal.Provider>
+        <HeroUIProvider>
+          <NextThemesProvider
+            attribute="class"
+            enableSystem={false}
+            defaultTheme="light"
+          >
+            {children}
+          </NextThemesProvider>
+        </HeroUIProvider>
+      </NiceModal.Provider>
     </StateProvider>
-  )
+  );
 }
