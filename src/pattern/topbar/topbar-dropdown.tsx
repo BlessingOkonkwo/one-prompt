@@ -11,15 +11,25 @@ import DarkmodeIcon from "../shared/icons/darkmode-icon";
 import LogoutIcon from "../shared/icons/logout-icon";
 import ChevronDownIcon from "../shared/icons/chevron-down-icon";
 import ThemeSwitcher from "@/components/theme/Themeswitcher";
+import { useStateContext } from "@/state/provider";
+import { useRouter } from "next/navigation";
 
 const TopbarDropdown = () => {
+  const { isLoggedIn, setIsLoggedIn } = useStateContext();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    router.replace("/");
+    setIsLoggedIn(false);
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="h-6 w-6 rounded-full flex items-center justify-center hover:bg-iconHover">
         <ChevronDownIcon />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem className="!text-primary">
+        <DropdownMenuItem onClick={handleLogout} className="!text-primary">
           <LogoutIcon />
           Logout
         </DropdownMenuItem>
@@ -27,7 +37,7 @@ const TopbarDropdown = () => {
         <DropdownMenuSeparator />
 
         {/* <DropdownMenuItem> */}
-          <ThemeSwitcher />
+        <ThemeSwitcher />
         {/* </DropdownMenuItem> */}
       </DropdownMenuContent>
     </DropdownMenu>

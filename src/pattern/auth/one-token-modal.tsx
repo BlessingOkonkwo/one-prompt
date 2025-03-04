@@ -27,16 +27,17 @@ import {
 } from "@/components/ui/input-otp";
 import InputErrorMessage from "@/components/inputs/input-error-message";
 import LoadingButton from "@/components/controls/loading-button";
+import { useStateContext } from "@/state/provider";
 
-const LoginFormSchema = Yup.object().shape({
-  email: Yup.string()
-    .email("Email must be a valid email address")
-    .required("Please enter your email address"),
-  password: Yup.string().required("Password is required"),
+const tokenLoginFormSchema = Yup.object().shape({
+  password: Yup.string()
+    .min(6, { message: "OTP has to be 6 digits" })
+    .required("Please enter OTP"),
 });
 
 const OneTokenModal = create(() => {
   const { resolve, remove, visible } = useModal();
+  const { setIsLoggedIn } = useStateContext();
 
   const handleCloseModal = () => {
     resolve({ resolved: true });
@@ -44,13 +45,12 @@ const OneTokenModal = create(() => {
   };
 
   const defaultValues = {
-    email: "",
     password: "",
   };
 
-  const methods = useForm<Omit<ILoginPayload, "serviceAccountApiKey">>({
+  const methods = useForm<{ password: string }>({
     mode: "onChange",
-    resolver: yupResolver(LoginFormSchema),
+    resolver: yupResolver(tokenLoginFormSchema),
     reValidateMode: "onChange",
     delayError: 2000,
     defaultValues: defaultValues,
@@ -60,6 +60,11 @@ const OneTokenModal = create(() => {
     handleSubmit,
     formState: { errors, isDirty },
   } = methods;
+
+  const onSubmit: SubmitHandler<{ password: string }> = () => {
+    setIsLoggedIn(true);
+    handleCloseModal();
+  };
 
   return (
     <AlertDialog open={visible} onOpenChange={handleCloseModal}>
@@ -74,7 +79,10 @@ const OneTokenModal = create(() => {
         </AlertDialogHeader>
 
         <FormProvider {...methods}>
-          <form className="flex flex-col gap-[48px] w-[335px]">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col gap-[48px] w-[335px]"
+          >
             <Controller
               name="password"
               control={methods.control}
@@ -91,9 +99,6 @@ const OneTokenModal = create(() => {
                       <InputOTPSlot index={0} />
                       <InputOTPSlot index={1} />
                       <InputOTPSlot index={2} />
-                      {/* </InputOTPGroup>
-                    <InputOTPSeparator />
-                    <InputOTPGroup> */}
                       <InputOTPSlot index={3} />
                       <InputOTPSlot index={4} />
                       <InputOTPSlot index={5} />
@@ -112,17 +117,6 @@ const OneTokenModal = create(() => {
             </LoadingButton>
           </form>
         </FormProvider>
-
-        {/* <AlertDialogFooter className="w-[335px]">
-          <Button
-            variant="default"
-            disabled={!isDirty}
-            onClick={() => handleCloseModal()}
-            className="w-full"
-          >
-            Login
-          </Button>
-        </AlertDialogFooter> */}
       </AlertDialogContent>
     </AlertDialog>
   );

@@ -42,6 +42,7 @@ html {
 :root {
   --background: #f8f9fa;
   --foreground: #000000;
+  --landing: #ffffff;
 
   --auth-background: #ffffff;
 
@@ -180,6 +181,7 @@ html {
   --logo_tint: #ced4da;
   --background: #212529;
   --foreground: 210 40% 98%;
+  --landing: #212529;
 
   --card: #343a40;
   --card-foreground: #ced4da;

@@ -20,6 +20,7 @@ export const theme = {
     colors: {
       background: "var(--background)",
       foreground: "var(--foreground)",
+      landing: "var(--landing)",
       authBackground: "var(--auth-background)",
       sidebar: "var(--sidebar)",
       sidebarForeground: "var(--sidebar-foreground)",

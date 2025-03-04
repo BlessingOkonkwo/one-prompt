@@ -11,8 +11,9 @@ import { PopoverDemo } from "@/pattern/landing/popover-demo";
 
 export default function Home() {
   return (
-    <main className="flex flex-col container pb-9 w-screen min-h-screen place-items-center mx-auto">
-      <div className="mx-auto flex flex-col items-center w-full  ">
+    <main className="bg-landing flex flex-col containe pb-9 w-screen min-h-screen place-items-center mx-aut">
+        
+      <div className="container mt-[102px] mx-auto flex flex-col items-center w-full  ">
         {/* <LoginTopSection /> */}
 
         <p className=" font-medium text-subHeading text-[1.5rem] place-self-center">
