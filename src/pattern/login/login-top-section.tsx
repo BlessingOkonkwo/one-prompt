@@ -7,7 +7,8 @@ import LoginModal from "@/pattern/auth/login-modal";
 
 function LoginTopSection() {
   return (
-    <div className="flex place-content-between items-center w-full h-[80px] bg-nav border-b border-navBorder">
+    <div className="border-b  border-navBorder w-full">
+    <div className="flex container mx-auto place-content-between items-center w-full h-[80px] bg-nav ">
       <SterlingLogo className="fill-logoTint" />
 
       <Button
@@ -17,6 +18,7 @@ function LoginTopSection() {
       >
         Login
       </Button>
+    </div>
     </div>
   );
 }

@@ -24,9 +24,10 @@ interface StateContextProps {
   engines: Engine[]; // Array of all engines
   activeEngineId: number; // ID of the active engine
   activeChatId: string; // ID of the active state within the selected engine
+  activeSubCategoryId:number | undefined,
   isLoggedIn: boolean;
   addMessage: (message: Message) => void;
-  setActiveEngine: (engineId: number) => void; // Set the active engine
+  setActiveEngine: (engineId: number, subcategory?:number) => void; // Set the active engine
   setActiveChat: (chatId: string) => void; // Set the active state within the selected engine
   createNewChat: (title: string) => void; // Create a new chat session for the active engine
   setIsLoggedIn: (status: boolean) => void;
@@ -196,6 +197,7 @@ export const StateProvider = ({ children }: StateProviderProps) => {
 
   const [engines, setEngines] = useState<Engine[]>(initialEngines);
   const [activeEngineId, setActiveEngineId] = useState<number>(2); // Default engine is "NIP Query Engine"
+  const [activeSubCategoryId, setSubCategoryId] = useState<number | undefined>(); 
   const [activeChatId, setActiveChatId] = useState<string>("chat-2"); // Default active state
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
@@ -218,8 +220,9 @@ export const StateProvider = ({ children }: StateProviderProps) => {
   };
 
   // Set the active engine (switch between engines)
-  const setActiveEngine = (engineId: number) => {
+  const setActiveEngine = (engineId: number, categoryId?:number) => {
     setActiveEngineId(engineId);
+    setSubCategoryId(categoryId);
     // Automatically set the first state of the new engine as active
     const engine = engines.find((engine) => engine.engineId === engineId);
     if (engine) {
@@ -258,6 +261,7 @@ export const StateProvider = ({ children }: StateProviderProps) => {
         engines,
         activeEngineId,
         activeChatId,
+        activeSubCategoryId,
         isLoggedIn,
         addMessage,
         setActiveEngine,

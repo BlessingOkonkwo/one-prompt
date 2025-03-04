@@ -29,7 +29,7 @@ const SidebarItem = ({ title, chatId, className, href, ...props }: IProps) => {
       <Link
         href={href}
         className={cn(
-          "font-inter text-sidebarForeground font-medium text-sm py-2 px-1 rounded-lg w-[227px] max-w-[227px] text-ellipsis overflow-hidden text-nowrap hover:bg-sidebarActive",
+          "font-inter text-sidebarForeground font-medium text-sm py-2 px-1 rounded-lg  max-w-[30vw] text-ellipsis overflow-hidden text-nowrap hover:bg-sidebarActive",
           className
         )}
         {...props}

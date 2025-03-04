@@ -32,7 +32,7 @@ export function PopoverDemo({ engine }: IProps) {
       </PopoverTrigger>
       <PopoverContent className="w-[402.5px] flex flex-wrap gap-5">
         {engine?.subCategories?.map((item, i) => (
-          <SubCategoryCard key={i} engineId={item.id}>
+          <SubCategoryCard key={i} categoryId={item.id} engineId={engine.engineId}>
             {item.sub}
           </SubCategoryCard>
         ))}

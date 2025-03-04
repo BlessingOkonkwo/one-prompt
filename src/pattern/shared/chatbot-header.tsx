@@ -14,6 +14,7 @@ function ChatBotHeader() {
     engines,
     activeEngineId,
     activeChatId,
+    activeSubCategoryId,
     addMessage,
     setActiveChat,
     createNewChat,
@@ -25,6 +26,7 @@ function ChatBotHeader() {
   const activeEngine = engines.find(
     (engine) => engine.engineId === activeEngineId
   );
+  const activeSubCategory = activeEngine?.subCategories?.find((categories)=> categories.id==activeSubCategoryId)
 
   return (
     <div className="fixed top-0 z-50 w-full py-5 bg-nav border-b-1 border-navBorder">
@@ -33,7 +35,7 @@ function ChatBotHeader() {
         <div className="flex place-items-center gap-1 ml-20 ">
           <EngineLogo />{" "}
           <p className="text-navCategory ml-1 text-base font-medium font-inter">
-            {activeEngine?.engineName}
+            {activeSubCategory?.name??activeEngine?.engineName}
           </p>
         </div>
 

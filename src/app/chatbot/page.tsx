@@ -4,6 +4,7 @@ import AddMessageField from "@/pattern/chat/textfield";
 import Suggestions from "@/pattern/dashboard/suggestions";
 import ChevronBackIcon from "@/pattern/shared/icons/chevron-back-icon";
 import Sidebar from "@/pattern/shared/sidebar";
+import SidebarItem from "@/pattern/shared/sidebar-item";
 import { useStateContext } from "@/state/provider";
 import Link from "next/link";
 import React from "react";
@@ -23,38 +24,44 @@ function Page() {
     return <div>Please select a chat session to view messages.</div>;
   }
   return (
-    <div className="flex grow w-screen bg- min-h-screen">
-      {/* <div className="flex flex-col bg-white w-[20vw] place-items-center">
-        <p>Your recent searches</p>
-        {activeEngine?.searchHistory.map((re, i) => (
-          <p key={i}>{re.title}</p>
-        ))}
-      </div> */}
-
+    <div className="flex w-screen h-full ">
       <Sidebar />
 
-      <div className="w-ful px-4 pt-[102px] flex flex-col gap-10 w-[740px w-full">
+      <div className="grow px-4 pt-[102px] flex flex-col gap-10 ">
         <Link
           className="flex items-center gap-2 text-prompt mt-[22px] ml-[32px] hover:bg-iconHover w-fit p-1 rounded"
           href={`/`}
         >
           <ChevronBackIcon /> Back
         </Link>
+        <div className="  grow overflow-y-auto  w-full flex flex-col">
 
-        <div className="h-full justify-end min-w-[740px] self-center mx-auto">
           <MessageList />
-
-          {/* <p>paragraph</p> */}
-
-          <div className="flex flex-col gap-[10px]">
-            <Suggestions />
-            <AddMessageField />
-          </div>
         </div>
-        {/* <p>paragraph2</p> */}
+        <div className="flex flex-col gap-[10px]">
+          <Suggestions />
+          <AddMessageField />
+        </div>
       </div>
     </div>
+
   );
 }
 
 export default Page;
+{/* <div className="grow px-4 pt-[102px] flex flex-col gap-10 w-full">
+<Link
+  className="flex items-center gap-2 text-prompt mt-[22px] ml-[32px] hover:bg-iconHover w-fit p-1 rounded"
+  href={`/`}
+>
+  <ChevronBackIcon /> Back
+</Link>
+
+<div className="flex-grow bg-blue-400 justify-end w-full self-center mx-auto">
+  <div className="flex-grow"></div>
+  <div className="flex flex-col gap-[10px]">
+    <Suggestions />
+    <AddMessageField />
+  </div>
+</div>
+</div> */}
