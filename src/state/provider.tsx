@@ -197,7 +197,7 @@ export const StateProvider = ({ children }: StateProviderProps) => {
   ];
 
   const [engines, setEngines] = useState<Engine[]>(initialEngines);
-  const [activeEngineId, setActiveEngineId] = useState<number>(2); // Default engine is "NIP Query Engine"
+  const [activeEngineId, setActiveEngineId] = useState<number>(-1); // Default engine is "NIP Query Engine"
   const [activeSubCategoryId, setSubCategoryId] = useState<number | undefined>();
   const [activeChatId, setActiveChatId] = useState<string>("chat-2"); // Default active state
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);

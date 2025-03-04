@@ -1,3 +1,4 @@
+'use client'
 // components/AddMessageField.tsx
 import { useStateContext } from "@/state/provider";
 import React, { useState } from "react";

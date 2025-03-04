@@ -7,11 +7,26 @@ import Sidebar from "@/pattern/shared/sidebar";
 import SidebarItem from "@/pattern/shared/sidebar-item";
 import { useStateContext } from "@/state/provider";
 import Link from "next/link";
-import React, { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 function Page() {
-  const { engines, activeEngineId, activeChatId,addAiMessage } = useStateContext();
+
+  const searchParams = useSearchParams()
+
+  const chatId = searchParams.get('chatId')
+  const engineId = searchParams.get('engineId')
+
+
+  const { engines, activeEngineId, activeChatId, addAiMessage, setActiveChat, setActiveEngine } = useStateContext();
   const [isTyping, setIsTyping] = useState(false);
+
+  useEffect(() => {
+    if (chatId != null && engineId != null) {
+      setActiveChat(chatId)
+      setActiveEngine(parseInt(engineId))
+    }
+  }, [])
 
   const activeEngine = engines.find(
     (engine) => engine.engineId === activeEngineId
@@ -41,7 +56,7 @@ function Page() {
         </div>
         <div className="flex flex-col gap-[10px]">
           <Suggestions />
-          <AddMessageField isTyping={isTyping}/>
+          <AddMessageField isTyping={isTyping} />
         </div>
       </div>
     </div>

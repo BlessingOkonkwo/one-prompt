@@ -19,17 +19,23 @@ const MessageList: React.FC<MessageListProps> = ({ isTyping, setIsTyping, sendAi
   );
 
   const [lastSize, setLastSize] = useState(0);
+  const [startingSize, setStartSize] = useState(0);
   const endOfMessagesRef = useRef<HTMLDivElement | null>(null);
 
+  useEffect(() => {
+   setStartSize(activeState?.messages?.length??0)
+  }, [])
+  
   useEffect(() => {
     if (endOfMessagesRef.current) {
       endOfMessagesRef.current.scrollIntoView({ behavior: 'smooth' });
     }
+    const newMessages = activeState?.messages?.length??0;
     if ((activeState?.messages?.length ?? 0) > lastSize) {
       const previousSize = lastSize;
-      setLastSize(activeState?.messages?.length ?? 0);
+      setLastSize(newMessages);
 
-      if (previousSize != 0) {
+      if (previousSize != 0 || (newMessages==1 && startingSize==0)) {
         const lastMessage = activeState?.messages?.at(-1);
         if (lastMessage?.isAi != true) {
           setIsTyping(true);
