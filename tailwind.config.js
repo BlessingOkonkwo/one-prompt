@@ -93,6 +93,7 @@ export const theme = {
       border: "var(--border)",
       main: "var(--main)",
       popover: "var(--popover)",
+      popoverBorder: "var(--popover-border)",
       popoverForeground: "var(--popover-foreground)",
       secondary: "var(--secondary)",
       secondaryForeground: "var(--secondary-foreground)",

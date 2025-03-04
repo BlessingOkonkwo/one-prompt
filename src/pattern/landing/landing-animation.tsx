@@ -9,6 +9,7 @@ import CategoryIcon3 from "../shared/icons/category-icon3";
 import CategoryIcon4 from "../shared/icons/category-icon4";
 import { useStateContext } from "@/state/provider";
 import { useRouter } from "next/navigation";
+import { PopoverDemo } from "./popover-demo";
 
 const GlobeVisualization = () => {
   const { engines, activeChatId, setActiveEngine } = useStateContext();
@@ -53,24 +54,32 @@ const GlobeVisualization = () => {
       <CategoryIcon3 className="absolute z-50 top-[77%] left-[56%]" />
       <CategoryIcon4 className="absolute z-50 top-[69%] left-[23%]" />
 
-      {engines.map((item, index) => (
-        <div
-          key={index}
-          onClick={() => {
-            setActiveEngine(item.engineId);
-            router.push(
-              `chatbot?engineId=${item.engineId}&chatId=${activeChatId}`
-            );
-          }}
-          className={`absolute flex items-center gap-2 ${item.position} cursor-pointer borde rounded-md px-2 transition-transform duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1`}
-        >
-          {item.position.includes("right") && item.icon}
-          <p className={`text-sm font-semibold mt-2 text-mainCategories`}>
-            {item.engineName}
-          </p>
-          {item.position.includes("left") && item.icon}
-        </div>
-      ))}
+      {engines
+        .filter((item) => !item.subCategories?.length)
+        .map((item, index) => (
+          <div
+            key={index}
+            onClick={() => {
+              setActiveEngine(item.engineId);
+              router.push(
+                `chatbot?engineId=${item.engineId}&chatId=${activeChatId}`
+              );
+            }}
+            className={`absolute flex items-center gap-2 ${item.position} cursor-pointer borde rounded-md px-2 transition-transform duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1`}
+          >
+            {item.position.includes("right") && item.icon}
+            <p className={`text-sm font-semibold mt-2 text-mainCategories`}>
+              {item.engineName}
+            </p>
+            {item.position.includes("left") && item.icon}
+          </div>
+        ))}
+
+      {engines
+        .filter((item) => item.subCategories?.length)
+        .map((item, index) => (
+          <PopoverDemo key={index} engine={item} />
+        ))}
 
       {/* Globe Image */}
       <Image

@@ -3,6 +3,9 @@ import LoginTopSection from "@/pattern/login/login-top-section";
 import GlobeVisualization from "@/pattern/landing/landing-animation";
 import MoreCategoriesIcon from "@/pattern/shared/icons/more-categories-icon";
 import Link from "next/link";
+import ProductsPopover from "@/pattern/landing/products-popover";
+import HamzaLogo from "@/pattern/shared/icons/hamza-logo";
+import { PopoverDemo } from "@/pattern/landing/popover-demo";
 // import SterlingLogo from "@/pattern/shared/icons/sterling-logo";
 // import { Button } from "@heroui/react";
 
@@ -34,6 +37,9 @@ export default function Home() {
           <MoreCategoriesIcon />
           View more categories
         </Link>
+
+        {/* <PopoverDemo /> */}
+
       </div>
     </main>
   );

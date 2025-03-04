@@ -128,7 +128,8 @@ html {
   --border: #99a3ad;
   --main: #212529;
 
-  --popover: 0 0% 100%;
+  --popover: #ffffff;
+  --popover-border: #e1e1e1;
   --popover-foreground: 222.2 84% 4.9%;
 
   --secondary: 215, 87%, 54%, 1;
@@ -228,7 +229,8 @@ html {
   --table-header: #666e76;
   --table-border: #6c757d;
 
-  --popover: 222.2 84% 4.9%;
+  --popover: #343a40;
+  --popover-border: #6c757d;
   --popover-foreground: 210 40% 98%;
 
   --primary: #db353a;
@@ -289,7 +291,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #343A40;
+  background-color: #343a40;
   border-radius: 4px !important;
 }
 
