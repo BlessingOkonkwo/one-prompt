@@ -53,7 +53,7 @@ const MessageList: React.FC<MessageListProps> = ({ isTyping, setIsTyping, sendAi
   }
 
   return (
-    <div className="flex-grow overflow-y-scroll">
+    <div className="flex-grow overflow-y-scroll overflow-x-hidden">
       {activeState.messages.length === 0 ? (
         <div className="w-full place-items-center mt-40 flex flex-col">
           <EngineLogo className="w-20 h-20 animate-pulse" />

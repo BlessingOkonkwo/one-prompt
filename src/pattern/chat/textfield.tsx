@@ -52,6 +52,12 @@ const AddMessageField: React.FC<AddMessageFieldProps> = ({
           placeholder="Ask anything..."
           value={newMessage}
           onChange={(e) => setNewMessage(e.currentTarget.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault(); 
+              handleAddMessage();
+            }
+          }}
         />
 
         <div className="flex justify-between">
