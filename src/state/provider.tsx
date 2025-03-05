@@ -24,7 +24,7 @@ interface StateContextProps {
   engines: Engine[]; // Array of all engines
   activeEngineId: number; // ID of the active engine
   activeChatId: string; // ID of the active state within the selected engine
-  activeSubCategoryId: number | undefined,
+  activeSubCategoryId: number | undefined;
   isLoggedIn: boolean;
   addMessage: (message: Message) => void;
   addAiMessage: () => void;
@@ -77,16 +77,16 @@ export const StateProvider = ({ children }: StateProviderProps) => {
             },
             {
               id: "msg-3",
+              message: "Should I consider bonds as part of my portfolio?",
+              date: "2025-03-02T10:10:00Z",
+              isAi: false,
+            },
+            {
+              id: "msg-4",
               message:
                 "Additionally, dollar-cost averaging and tax-efficient investment strategies can enhance long-term portfolio performance.",
               date: "2025-03-02T10:07:00Z",
               isAi: true,
-            },
-            {
-              id: "msg-4",
-              message: "Should I consider bonds as part of my portfolio?",
-              date: "2025-03-02T10:10:00Z",
-              isAi: false,
             },
           ],
         },
@@ -198,7 +198,9 @@ export const StateProvider = ({ children }: StateProviderProps) => {
 
   const [engines, setEngines] = useState<Engine[]>(initialEngines);
   const [activeEngineId, setActiveEngineId] = useState<number>(-1); // Default engine is "NIP Query Engine"
-  const [activeSubCategoryId, setSubCategoryId] = useState<number | undefined>();
+  const [activeSubCategoryId, setSubCategoryId] = useState<
+    number | undefined
+  >();
   const [activeChatId, setActiveChatId] = useState<string>("chat-2"); // Default active state
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
@@ -208,13 +210,13 @@ export const StateProvider = ({ children }: StateProviderProps) => {
       prevEngines.map((engine) =>
         engine.engineId === activeEngineId
           ? {
-            ...engine,
-            searchHistory: engine.searchHistory.map((state) =>
-              state.id === activeChatId
-                ? { ...state, messages: [...state.messages, message] }
-                : state
-            ),
-          }
+              ...engine,
+              searchHistory: engine.searchHistory.map((state) =>
+                state.id === activeChatId
+                  ? { ...state, messages: [...state.messages, message] }
+                  : state
+              ),
+            }
           : engine
       )
     );
@@ -241,13 +243,13 @@ export const StateProvider = ({ children }: StateProviderProps) => {
       prevEngines.map((engine) =>
         engine.engineId === activeEngineId
           ? {
-            ...engine,
-            searchHistory: engine.searchHistory.map((state) =>
-              state.id === activeChatId
-                ? { ...state, messages: [...state.messages, newMessageObj] }
-                : state
-            ),
-          }
+              ...engine,
+              searchHistory: engine.searchHistory.map((state) =>
+                state.id === activeChatId
+                  ? { ...state, messages: [...state.messages, newMessageObj] }
+                  : state
+              ),
+            }
           : engine
       )
     );
@@ -280,9 +282,9 @@ export const StateProvider = ({ children }: StateProviderProps) => {
       prevEngines.map((engine) =>
         engine.engineId === activeEngineId
           ? {
-            ...engine,
-            searchHistory: [...engine.searchHistory, newChat],
-          }
+              ...engine,
+              searchHistory: [...engine.searchHistory, newChat],
+            }
           : engine
       )
     );

@@ -12,30 +12,31 @@ import SterlingLogo from "./icons/sterling-logo";
 import { Button } from "@/components/ui/button";
 import { show } from "@ebay/nice-modal-react";
 import LoginModal from "../auth/login-modal";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 function ChatBotHeader() {
-  const {
-    engines,
-    activeEngineId,
-    isLoggedIn,
-    setIsLoggedIn,
-  } = useStateContext();
+  const { engines, activeEngineId, isLoggedIn, setIsLoggedIn } =
+    useStateContext();
+  const router = useRouter();
 
   const activeEngine = engines.find(
     (engine) => engine.engineId === activeEngineId
   );
-  const activeSubCategory = activeEngine?.subCategories?.find((categories)=> categories.id==activeSubCategoryId)
+  // const activeSubCategory = activeEngine?.subCategories?.find(
+  //   (categories) => categories.id == activeSubCategoryId
+  // );
 
   const pathname = usePathname();
 
   return (
-    <div className="fixed top-0 z-50 w-full py-5 bg-nav border-b-1 border-navBorder">
+    <div className="fixed top-0 z-50 w-full py- h-[80px] flex flex-col items-center justify-center bg-nav border-b-1 border-navBorder">
       <div className=" flex flex-row mx-auto container  place-items-center">
         {!isLoggedIn ? (
           <SterlingLogo className="fill-logoTint" />
         ) : (
-          <OnePromptLogo />
+          <button onClick={() => router.push("/")}>
+            <OnePromptLogo />
+          </button>
         )}
 
         {isLoggedIn && pathname.includes("/chatbot") && (
@@ -71,7 +72,7 @@ function ChatBotHeader() {
         ) : (
           <Button
             variant="outline"
-            className="py- px- w-[152px]"
+            className="py- px- h-[48px] w-[152px]"
             onClick={() => show(LoginModal)}
           >
             Login

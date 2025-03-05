@@ -89,6 +89,8 @@ export const theme = {
       subCategoryBorder: "var(--sub-category-border)",
       categoryCardIcon: "var(--category-card-icon)",
       categoryCardIconActive: "var(--category-card-icon-active)",
+      tokenInput: "var(--token-input)",
+      tokenInputForeground: "var(--token-input-foreground)",
 
       action: "var(--action)",
       border: "var(--border)",

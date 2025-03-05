@@ -101,6 +101,9 @@ html {
   --dropdown: #ffffff;
   --dropdown-border: #e9ecef;
 
+  --token-input: #fcfcfc;
+  --token-input-foreground: #000000;
+
   --heading: #1a1a1a;
   --sub-heading: #495057;
   --input: #ffffff;
@@ -237,6 +240,9 @@ html {
 
   --primary: #db353a;
   --primary-foreground: #ffffff;
+
+  --token-input: #ffffff1c;
+  --token-input-foreground: #ffffff;
 
   --secondary: 217.2 32.6% 17.5%;
   --secondary-foreground: 210 40% 98%;

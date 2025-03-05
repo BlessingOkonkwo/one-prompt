@@ -5,15 +5,19 @@ import SidebarCollapseIcon from "./icons/sidebar-collapse-icon";
 import NewChatIcon from "./icons/new-chat-icon";
 import SidebarExpandIcon from "./icons/sidebar-expand-icon";
 
-const Sidebar = () => {
+interface IProps {
+  isCollapsed: boolean;
+  setIsCollapsed: (value: boolean) => void;
+}
+
+const Sidebar = ({ isCollapsed, setIsCollapsed }: IProps) => {
   const { engines, activeEngineId } = useStateContext();
 
   const activeEngine = engines.find(
     (engine) => engine.engineId === activeEngineId
   );
-  
- 
-  const [isCollapsed, setIsCollapsed] = useState(false);
+
+  // const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
     <div
@@ -76,7 +80,6 @@ const Sidebar = () => {
                     href={`/chatbot?engineId=${activeEngineId}&chatId=${history.id}`}
                   />
                 ))}
-               
               </div>
             </div>
           </div>
