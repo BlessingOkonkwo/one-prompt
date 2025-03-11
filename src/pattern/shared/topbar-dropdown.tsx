@@ -7,9 +7,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import React from "react";
-import DarkmodeIcon from "../shared/icons/darkmode-icon";
-import LogoutIcon from "../shared/icons/logout-icon";
-import ChevronDownIcon from "../shared/icons/chevron-down-icon";
+import DarkmodeIcon from "./icons/darkmode-icon";
+import LogoutIcon from "./icons/logout-icon";
+import ChevronDownIcon from "./icons/chevron-down-icon";
 import ThemeSwitcher from "@/components/theme/Themeswitcher";
 import { useStateContext } from "@/state/provider";
 import { useRouter } from "next/navigation";

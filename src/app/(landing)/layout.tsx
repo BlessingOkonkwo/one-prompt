@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { cn } from "@/lib/utils";
-import LoginTopSection from "@/pattern/login/login-top-section";
 import ChatBotHeader from "@/pattern/shared/chatbot-header";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -9,10 +8,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <>
       <div
         className={cn(
-          "bg-background containe mx-auto pt-[102p] w-full min-h-screen h-full flex flex-col items-center space-y-"
+          "bg-background containe mx-auto pt-[102p] w-full min-h-screen h-full flex flex-col items-center"
         )}
       >
-        {/* <LoginTopSection /> */}
         <ChatBotHeader />
         <>{children}</>
       </div>

@@ -9,7 +9,7 @@ import SuggestionIcon from "@/pattern/shared/icons/suggestion-icon";
 import VoiceNoteIcon from "@/pattern/shared/icons/voice-note-icon";
 import AttachmentIcon from "@/pattern/shared/icons/attachment-icon";
 import Hidden from "@/components/data-display/hidden";
-import Suggestions from "../dashboard/suggestions";
+import Suggestions from "./suggestions";
 
 interface AddMessageFieldProps {
   isTyping: boolean;
@@ -54,7 +54,7 @@ const AddMessageField: React.FC<AddMessageFieldProps> = ({
           onChange={(e) => setNewMessage(e.currentTarget.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter" && !e.shiftKey) {
-              e.preventDefault(); 
+              e.preventDefault();
               handleAddMessage();
             }
           }}
