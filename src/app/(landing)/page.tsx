@@ -18,7 +18,7 @@ export default function Home() {
 
         <p className=" font-medium text-subHeading text-[1.5rem] place-self-center">
           One
-          <span className="font-BalloBhaina text-primary_color font-normal">
+          <span className="font-BalloBhaina text-primary font-normal">
             Prompt
           </span>
         </p>

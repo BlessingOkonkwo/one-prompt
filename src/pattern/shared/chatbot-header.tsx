@@ -31,8 +31,10 @@ function ChatBotHeader() {
   return (
     <div className="fixed top-0 z-50 w-full py- h-[80px] flex flex-col items-center justify-center bg-nav border-b-1 border-navBorder">
       <div className=" flex flex-row mx-auto container  place-items-center">
-        {!isLoggedIn ? (
-          <SterlingLogo className="fill-logoTint" />
+        {pathname === '/' ? (
+          <button onClick={() => router.push("/")}>
+            <SterlingLogo className="fill-logoTint" />
+          </button>
         ) : (
           <button onClick={() => router.push("/")}>
             <OnePromptLogo />
@@ -44,6 +46,15 @@ function ChatBotHeader() {
             <EngineLogo />{" "}
             <p className="text-navCategory ml-1 text-base font-medium font-inter">
               {activeEngine?.engineName}
+            </p>
+          </div>
+        )}
+        
+        {pathname.includes("/all-categories") && (
+          <div className="flex place-items-center gap-1 ml-20 ">
+            <EngineLogo />{" "}
+            <p className="text-navCategory ml-1 text-base font-medium font-inter">
+              All Categories
             </p>
           </div>
         )}

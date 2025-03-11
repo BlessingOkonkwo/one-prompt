@@ -30,7 +30,7 @@ const Page = () => {
   };
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 mt-[102px]">
       <div className="flex flex-col gap-1">
         <h1 className="font-nunito font-bold text-2xl">Welcome John,</h1>
         <p className="font-albert text-subHeading text-base">
@@ -90,6 +90,7 @@ const Page = () => {
                 desc={item.description}
                 icon={item.cardIcon}
                 engineId={item.engineId}
+                isActive={expandedCategory?.engineId === item.engineId}
                 onClick={() => {
                   if (item.subCategories?.length) {
                     handleCategoryClick(

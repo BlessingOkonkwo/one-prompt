@@ -15,11 +15,14 @@ const SubCategoryCard = ({ children, engineId,categoryId }: IProps) => {
   return (
     <div
       onClick={() => {
-        console.log("clicked me!!!");
         setActiveEngine(engineId,categoryId);
-        
         router.push(`/chatbot?engineId=${engineId}&chatId=${activeChatId}`);
       }}
+
+      // setActiveEngine(item.engineId);
+      //               router.push(
+      //                 `/chatbot?engineId=${item.engineId}&chatId=${activeChatId}`
+      //               );
       className="bg-subCategory border border-subCategoryBorder p- flex items-center flex-col justify-center rounded w-[171px] h-[80px] cursor-pointer"
     >
       {children}

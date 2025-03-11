@@ -49,7 +49,7 @@ const MessageList: React.FC<MessageListProps> = ({ isTyping, setIsTyping, sendAi
   }, [activeState?.messages]);
 
   if (!activeState) {
-    return <div>Please select a chat session to view messages.</div>;
+    return <div className="pt-[102px]">Please select a chat session to view messages.</div>;
   }
 
   return (

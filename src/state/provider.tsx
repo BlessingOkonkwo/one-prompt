@@ -147,10 +147,10 @@ export const StateProvider = ({ children }: StateProviderProps) => {
         "This engine provides you with all details about the different products and offerings.",
       position: "top-right",
       subCategories: [
-        { id: 31, sub: <OnebankLogo />, name: "OneBank Query Bot" },
-        { id: 32, sub: <SpectaLogo />, name: "Specta Query Bot" },
-        { id: 33, sub: <BancaLogo />, name: "Banca Query Bot" },
-        { id: 34, sub: <SwitchLogo />, name: "Switch Query Bot" },
+        { id: 31, sub: <OnebankLogo />, name: "OneBank Query Bot", searchHistory: [{ id: "1", title: "What are Nip", messages: [] }] },
+        { id: 32, sub: <SpectaLogo />, name: "Specta Query Bot", searchHistory: [{ id: "1", title: "What are Nip", messages: [] }] },
+        { id: 33, sub: <BancaLogo />, name: "Banca Query Bot", searchHistory: [{ id: "1", title: "What are Nip", messages: [] }] },
+        { id: 34, sub: <SwitchLogo />, name: "Switch Query Bot", searchHistory: [{ id: "1", title: "What are Nip", messages: [] }] },
       ],
     },
     {
@@ -164,10 +164,6 @@ export const StateProvider = ({ children }: StateProviderProps) => {
       description:
         "This engine provides you with all details about General Health queries.",
       position: "bottom-right",
-      subCategories: [
-        { id: 41, sub: <HamzaLogo />, name: "Hamza Query Bot" },
-        { id: 42, sub: <OnboardingLogo />, name: "Onboarding Query Bot" },
-      ],
     },
     {
       engineId: 5,
@@ -181,8 +177,8 @@ export const StateProvider = ({ children }: StateProviderProps) => {
         "This engine provides you with all details about Human Capital queries.",
       position: "middle-right",
       subCategories: [
-        { id: 51, sub: <HamzaLogo />, name: "Hamza Query Engine" },
-        { id: 52, sub: <OnboardingLogo />, name: "Onboarding Query Engine" },
+        { id: 51, sub: <HamzaLogo />, name: "Hamza Query Engine", searchHistory: [{ id: "1", title: "What are Nip", messages: [] }] },
+        { id: 52, sub: <OnboardingLogo />, name: "Onboarding Query Engine", searchHistory: [{ id: "1", title: "What are Nip", messages: [] }] },
       ],
     },
     {
@@ -257,8 +253,13 @@ export const StateProvider = ({ children }: StateProviderProps) => {
 
   // Set the active engine (switch between engines)
   const setActiveEngine = (engineId: number, categoryId?: number) => {
-    setActiveEngineId(engineId);
-    setSubCategoryId(categoryId);
+    // setActiveEngineId(engineId);
+    // setSubCategoryId(categoryId);
+    if(categoryId) {
+      setActiveEngineId(categoryId)
+    } else {
+      setActiveEngineId(engineId)
+    }
     // Automatically set the first state of the new engine as active
     const engine = engines.find((engine) => engine.engineId === engineId);
     if (engine) {

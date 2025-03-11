@@ -26,13 +26,13 @@ const Sidebar = ({ isCollapsed, setIsCollapsed }: IProps) => {
       }`}
     >
       <div className="flex items-center justify-end">
-        <button
+        {/* <button
           className="p-2 hover:bg-iconHover rounded h-10"
           aria-label="New chat"
           title="New chat"
         >
           <NewChatIcon />
-        </button>
+        </button> */}
 
         <button
           className="p-2 hover:bg-iconHover rounded h-10"

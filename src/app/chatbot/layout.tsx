@@ -17,7 +17,7 @@ export default function RootLayout({
     return (
         <main className="font-inter h-screen flex flex-col w-full overflow-hidden text-sm">
             <ChatBotHeader />
-            <div className="flex-grow overflow-hidden h-full  ">
+            <div className="flex-grow overflow-hidden h-full ">
 
                 {children}
 

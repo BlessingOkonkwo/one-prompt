@@ -65,7 +65,7 @@ const GlobeVisualization = () => {
                 `chatbot?engineId=${item.engineId}&chatId=${activeChatId}`
               );
             }}
-            className={`absolute flex items-center gap-2 ${item.position} cursor-pointer borde rounded-md px-2 transition-transform duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1`}
+            className={`absolute flex items-center gap-2 ${item.position} cursor-pointer borde rounded-md px-2 transition-transform duration-300 ease-in-out`}
           >
             {item.position.includes("right") && item.icon}
             <p className={`text-sm font-semibold mt-2 text-mainCategories`}>

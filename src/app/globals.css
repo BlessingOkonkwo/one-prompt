@@ -341,12 +341,12 @@ html {
 
 .middle-left {
   top: 55%;
-  left: -26%;
+  left: -28%;
   transform: translateY(-50%);
 }
 .middle-right {
   top: 50%;
-  right: -22%;
+  right: -24%;
   transform: translateY(-50%);
 }
 .bottom-left {
@@ -358,9 +358,7 @@ html {
   right: -10%;
 }
 
-
 .typing {
-
   position: relative;
 }
 

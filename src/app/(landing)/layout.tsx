@@ -9,7 +9,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <>
       <div
         className={cn(
-          "bg-background containe mx-auto pt-[102px] w-full min-h-screen h-full flex flex-col items-center space-y-"
+          "bg-background containe mx-auto pt-[102p] w-full min-h-screen h-full flex flex-col items-center space-y-"
         )}
       >
         {/* <LoginTopSection /> */}
