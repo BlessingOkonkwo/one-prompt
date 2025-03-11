@@ -11,7 +11,7 @@ import { create, useModal } from "@ebay/nice-modal-react";
 import SubCategoryCard from "./sub-category-card";
 
 interface IProps {
-  arr: [];
+  arr: any;
 }
 
 const ProductsPopover = create(({ arr }: IProps) => {
@@ -26,8 +26,8 @@ const ProductsPopover = create(({ arr }: IProps) => {
         <Button variant="outline">Open popover</Button>
       </PopoverTrigger>
       <PopoverContent className="w-[402.5px] flex flex-wrap gap-5" sideOffset={5}>
-        {arr.map((item, i) => (
-          <SubCategoryCard key={i} engineId={item.id}>
+        {arr.map((item: any, i: any) => (
+          <SubCategoryCard key={i} engineId={item.id} categoryId={0}>
             {item.sub}
           </SubCategoryCard>
         ))}
