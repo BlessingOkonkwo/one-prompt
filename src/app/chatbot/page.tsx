@@ -6,9 +6,9 @@ import Sidebar from "@/pattern/shared/sidebar";
 import { useStateContext } from "@/state/provider";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 
-function Page() {
+function ChatbotPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const searchParams = useSearchParams();
 
@@ -82,4 +82,12 @@ function Page() {
   );
 }
 
-export default Page;
+// export default Page;
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading chatbot...</div>}>
+      <ChatbotPage />
+    </Suspense>
+  );
+}
