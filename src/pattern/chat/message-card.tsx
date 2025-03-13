@@ -15,7 +15,9 @@ const MessageCard = ({ text, isAi }: IProps) => {
         </div>
       ) : (
         <div className="flex gap-3 bg-aiMessageCard max-w-[60%] text-aiMessageCardForeground w-[50vw] !break-words text-ellipsis text-base ">
-          <EngineLogo />
+          <div>
+            <EngineLogo />
+          </div>
           <div dangerouslySetInnerHTML={{ __html: text }} />
         </div>
       )}
